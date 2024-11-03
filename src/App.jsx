@@ -1,15 +1,17 @@
-import { Routes, Route } from 'react-router-dom';
+// src/App.js
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
 import Login from './pages/Login/Login';
 import Dashboard from './pages/Dashboard/Dashboard';
-import NotFound from './pages/NotFound/NotFound';
+import ProtectedRoute from './pages/ProtectedRoutes/ProtectedRoute';
 
 function App() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
-      <Route path="/" element={<Dashboard />} />
-      <Route path="*" element={<NotFound />} />
+      <Route path="/" element={<ProtectedRoute />}>
+        <Route index element={<Dashboard />} />
+      </Route>
     </Routes>
   );
 }
